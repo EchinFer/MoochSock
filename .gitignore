@@ -1,0 +1,17 @@
+# Node.js
+node_modules/
+
+# Dependiendo de tu sistema operativo, puedes agregar también estos archivos y carpetas
+# para evitar problemas de configuración específicos del sistema.
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Archivos y carpetas generados por tu entorno de desarrollo
+.vscode/
+.idea/
+
+# Archivo de configuración local (puedes personalizar esta lista según tu ent
