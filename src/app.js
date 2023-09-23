@@ -1,0 +1,1 @@
+require('./../dist/index'); // Importa y ejecuta tu aplicación desde 'dist/index.js'
