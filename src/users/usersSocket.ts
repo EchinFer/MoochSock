@@ -13,20 +13,25 @@ export function configureUserSocket(io: Server) {
                 const existUser = isUserConnected(userId);
                 if (!existUser) {
                     console.log("No existe el usuario");
-                    userDataSession.sessionData.socketId = socket.id;
+                    console.log("userDataSession: ", userDataSession);
+                    userDataSession.sessionData.socketIds.push(socket.id);
                     const user = addUser(userDataSession);
                     socket.join(sessionId);
                 } else {
                     if (existUser.sessionData.id != userDataSession.sessionData.id) {
                         //Cerrar sesión por completo
-                        io.to(existUser.sessionData.socketId).emit("logout", JSON.stringify(existUser));
+                        existUser.sessionData.socketIds.forEach(socketId => {
+                            io.to(socketId).emit("logout", JSON.stringify(existUser));
+                        })
+
                     } else {
                         //Cerrar sesión por completo
-                        io.to(existUser.sessionData.socketId).emit("disable-window", JSON.stringify(existUser));
+                        // io.to(existUser.sessionData.socketId).emit("disable-window", JSON.stringify(existUser));
 
                     }
-                    existUser.sessionData.socketId = socket.id;
+                    existUser.sessionData.socketIds.push(socket.id);
                 }
+                console.log("users: ", users);
                 console.log("users: ", users);
 
             } catch (error) {

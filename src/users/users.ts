@@ -11,11 +11,11 @@ function getUserById(id: number) {
 }
 
 function getUserBySocketId(id: string) {
-    return users.find((user) => user.sessionData.socketId === id);
+    return users.find((user) => user.sessionData.id === id);
 }
 
 function removeUserBySocketId(id: string) {
-    const index = users.findIndex((user) => user.sessionData.socketId === id);
+    const index = users.findIndex((user) => user.sessionData.id === id);
     if (index !== -1) {
         return users.splice(index, 1)[0];
     }

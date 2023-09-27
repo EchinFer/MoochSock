@@ -5,7 +5,7 @@ export interface User {
 }
 export interface Session {
     id: string;
-    socketId: string;
+    socketIds: string[];
 }
 
 export interface UserDataSession {
